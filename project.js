@@ -65,13 +65,25 @@ var library =[
   buildBook("Hoax for Hire" , ['Fantasy', 'FairyTail'])
 ];
 
+// function compairTwoArrays(arrayOfArrays, array) { //a geniral function to use later to get the array of indexes.
+//   var acc = [];
+//   each(arrayOfArrays, function(element, index){
+//     for (var i = 0; i < array.length; i++) {
+//       if(element.includes(array[i]))
+//         acc.push(index);
+//     }
+//   }) /// try using each instead of for. 
+//   return acc; 
+// }
+
 function compairTwoArrays(arrayOfArrays, array) { //a geniral function to use later to get the array of indexes.
   var acc = [];
   each(arrayOfArrays, function(element, index){
-    for (var i = 0; i < array.length; i++) {
-      if(element.includes(array[i]))
-        acc.push(index);
-    }
+    var haveAll = reduce(array,function(start, item, i){
+      return (start && (element.includes(item)))
+    } , true);
+    if(haveAll)
+      acc.push(index);
   }) /// try using each instead of for. 
   return acc; 
 }
